@@ -1,6 +1,6 @@
 #! /usr/bin/ruby
-require 'rubygems'
 require 'yaml'
+require 'optparse'
 
 target = File.expand_path(ARGV.size > 0 ? ARGV[0] : '.')
 
