@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{alternate-folder}
-  s.version = "0.0.0"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andy Moreland"]
@@ -14,9 +14,16 @@ Gem::Specification.new do |s|
   s.description = %q{}
   s.email = %q{andy@andymoreland.com}
   s.executables = ["af"]
+  s.extra_rdoc_files = [
+    "README.markdown",
+     "README.rdoc"
+  ]
   s.files = [
-    "Rakefile",
+    "README.markdown",
+     "Rakefile",
      "VERSION",
+     "alternate-folder.gemspec",
+     "bin/af",
      "lib/alternate-folder.rb"
   ]
   s.homepage = %q{http://github.com/AndyMoreland/alternate-folder}
