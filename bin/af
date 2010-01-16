@@ -1,0 +1,34 @@
+#! /usr/bin/ruby
+require 'optparse'
+require 'alternate-folder'
+
+include AlternateFolder
+
+def ask?(question)
+  puts question
+  gets.chomp
+end
+
+options = {}
+
+optparse = OptionParser.new do |opts|
+  opts.banner = 'Usage: af [Options] folder'
+
+  options[:change] = false
+  opts.on('-c', '--change', 'Change the mapping for the given folder') { options[:change] = true }
+end
+
+optparse.parse!
+
+target = File.expand_path(ARGV.size > 0 ? ARGV[0] : '.')
+m = Mapping.find(target)
+
+#This code is run if the mapping doesn't exist or if the user specifically asks to change the mapping
+if !m || options[:change]
+  remote_server = ask? "Which server?"
+  remote_folder = ask? "Which remote folder on #{remote_server}?"
+  
+  m = Mapping.update(target, Mapping.new(target,remote_folder, remote_server))
+end
+
+m.ssh if m
